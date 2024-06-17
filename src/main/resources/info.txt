@@ -1,0 +1,30 @@
+CREATE TABLE IF NOT EXISTS Student (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    middle_name VARCHAR(255),
+    last_name VARCHAR(255) NOT NULL,
+    prn_number INT UNIQUE NOT NULL,
+    pfp LONGBLOB,
+    class_id INT,
+    user_id INT,
+    FOREIGN KEY (class_id) REFERENCES Classes(class_id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+INSERT INTO Student (first_name, middle_name, last_name, prn_number, class_id, user_id) 
+VALUES ('Vyom', 'Kumar', 'Vasava', 8021077293, 3, 7);
+
+CREATE TABLE IF NOT EXISTS Employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    contact_number VARCHAR(20),
+    hire_date DATE NOT NULL,
+    department_id INT,
+    job_title VARCHAR(255),
+    salary DECIMAL(10, 2),
+    pfp LONGBLOB,
+    FOREIGN KEY (department_id) REFERENCES Departments(department_id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
